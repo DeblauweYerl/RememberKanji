@@ -39,13 +39,13 @@ with open('data/kanji.json', encoding='utf8') as f:
     kanji_data = json.load(f)
 
 
-# input and get keywords
-keywords = get_keywords(input("Insert a character: "))
 
+# sentence generation
+sen_easy = nlp(get_keywords('切'), **params)
+sen_medium = nlp(get_keywords('階'), **params)
+sen_hard = nlp(get_keywords('着'), **params)
 
-# generate sentence
-if len(keywords) > 2:
-    final_result = nlp(keywords, **params)
-    print(f"Sentence: {final_result}")
-else:
-    print("Try another character.")
+# print results
+print(f"Sentence easy: {sen_easy}")
+print(f"Sentence medium: {sen_medium}")
+print(f"Sentence hard: {sen_hard}")
